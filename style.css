@@ -1,0 +1,55 @@
+body {
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom right, #000, #666);
+    display: grid;
+    place-items: center;
+}
+
+main {
+    width: 1000px;
+    height: 700px;
+    position: absolute;
+    background: url('./img/bg.jpg') 50% no-repeat;
+    background-size: 110%;
+}
+
+.tank {
+    width: 20px;
+    height: 20px;
+    background-color: yellowgreen;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    box-shadow: inset -5px 0 0 #fff;
+}
+
+.bullet {
+    width: 20px;
+    height: 20px;
+    background-color: gold;
+    position: absolute;
+}
+
+.left {
+    transform: rotate(180deg);
+}
+
+.right {
+    transform: rotate(0deg);
+}
+
+.top {
+    transform: rotate(-90deg);
+}
+
+.bottom {
+    transform: rotate(90deg);
+}
+
+@media (max-width: 1012px) {
+    main {
+        width: 500px;
+        height: 300px;
+    }
+}

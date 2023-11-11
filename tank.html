@@ -4,114 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            font-family: sans-serif;
-            background: linear-gradient(to top right, #000, rgb(85, 119, 98));
-        }
-
-        .tank {
-            width: 50px;
-            height: 30px;
-            background: linear-gradient(90deg, #333 75%, greenyellow 75%);
-            position: relative;
-            left: 5px;
-            top: 5px;
-            z-index: 1;
-        }
-
-        .top-rotation {
-            transform: rotate(270deg);
-        }
-
-        .right-rotation {
-            transform: rotate(0deg);
-        }
-
-        .left-rotation {
-            transform: rotate(180deg);
-        }
-
-        .bottom-rotation {
-            transform: rotate(90deg);
-        }
-
-        .bullet {
-            width: 20px;
-            height: 5px;
-            background-color: salmon;
-            z-index: 2;
-            position: absolute;
-        }
-    </style>
+    <title>Tank Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="tank right-rotation">
+    <main>
+        <div class="tank right">
+            <div class="tower">
+                <div class="gun"></div>
+            </div>
+            <div class="wheel"></div>
+            <div class="wheel"></div>
+        </div>
+    </main>
 
-    </div>
-
-    <script>
-        let tank = document.querySelector('.tank');
-        document.body.addEventListener("keydown", (evt) => {
-            if (evt.keyCode == 68) { // D
-                tank.classList.remove('left-rotation');
-                tank.classList.add('right-rotation');
-                tank.classList.remove('top-rotation');
-                tank.classList.remove('bottom-rotation');
-            }
-
-            if (evt.keyCode == 65) { // A
-                tank.classList.add('left-rotation');
-                tank.classList.remove('right-rotation');
-                tank.classList.remove('top-rotation');
-                tank.classList.remove('bottom-rotation');
-            }
-
-            if (evt.keyCode == 83) { // S
-                tank.classList.remove('left-rotation');
-                tank.classList.remove('right-rotation');
-                tank.classList.remove('top-rotation');
-                tank.classList.add('bottom-rotation');
-            }
-
-            if (evt.keyCode == 87) { // W
-                tank.classList.remove('left-rotation');
-                tank.classList.remove('right-rotation');
-                tank.classList.add('top-rotation');
-                tank.classList.remove('bottom-rotation');
-            }
-            
-            if (evt.keyCode === 32) {
-                let bullet = document.createElement('div');
-                
-                let arrOfButllets = [];
-                arrOfButllets.push(bullet);
-
-                bullet.classList.add('bullet');
-                bullet.style.left = tank.offsetLeft + 30 + 'px';
-                bullet.style.top = tank.offsetTop + 10 + 'px';
-                document.body.prepend(bullet);
-
-                console.log(arrOfButllets);
-                
-                let leftRightPosition = bullet.offsetLeft;
-
-                let fire = setInterval(() => {
-                    if (tank.classList.contains('right-rotation')) {
-                        bullet.style.left = leftRightPosition + 'px';
-                        leftRightPosition++;
-                    } else if (tank.classList.contains('left-rotation')) {
-                        bullet.style.left = leftRightPosition + 'px';
-                        leftRightPosition--;
-                    }
-                }, 10);
-            }
-        })
-    </script>
+    <script src="./app.js" defer></script>
 </body>
 
 </html>
