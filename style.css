@@ -15,20 +15,56 @@ main {
 }
 
 .tank {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 40px;
     background-color: yellowgreen;
     position: absolute;
     left: 10px;
     top: 10px;
-    box-shadow: inset -5px 0 0 #fff;
+    box-shadow: 5px 0 0 #333;
+}
+
+.tower {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #000;
+    background-color: chocolate;
+    position: absolute;
+    left: 15px;
+    top: 5px;
+}
+
+.gun {
+    width: 50px;
+    height: 10px;
+    background-color: green;
+    position: absolute;
+    top: 10px;
+    left: 29px;
+    box-shadow: 10px 0 0 #fff;
+}
+
+.wheel {
+    width: 60px;
+    height: 15px;
+    background: linear-gradient(90deg, #333 50%, #ccc 50%);
+    background-size: 8px;
+    position: absolute;
+    top: -13px;
+    left: -5px;
+}
+
+.wheel:nth-child(2) {
+    top: 38px;
 }
 
 .bullet {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     background-color: gold;
     position: absolute;
+    border-radius: 50%;
 }
 
 .left {

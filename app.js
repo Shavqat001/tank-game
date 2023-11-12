@@ -1,15 +1,19 @@
 let main = document.querySelector('main');
 let tank = document.querySelector('.tank');
+let gun = document.querySelector('.gun');
 let i = tank.offsetLeft;
 let t = tank.offsetTop;
-window.addEventListener('keydown', (evt) => {
 
+window.addEventListener('keydown', (evt) => {
     if (evt.code === 'Space') {
         let bullet = document.createElement('div');
         bullet.classList.add('bullet');
-        bullet.style.left = `${tank.offsetLeft}px`;
-        bullet.style.top = `${tank.offsetTop}px`;
+        bullet.style.top = `${tank.offsetTop + 15}px`;
+        bullet.style.left = `${tank.offsetLeft + 80}px`;
         main.append(bullet);
+
+        console.log(tank.offsetLeft);
+        console.log(bullet.offsetLeft);
 
         let left = tank.offsetLeft;
         let right = tank.offsetLeft;
@@ -17,45 +21,45 @@ window.addEventListener('keydown', (evt) => {
         let bottom = tank.offsetTop;
 
         if (tank.classList.contains('right')) {
-            setInterval(() => {
-                if (right > main.offsetWidth - bullet.offsetWidth) {
-                    bullet.remove();
-                    right = tank.offsetLeft;
-                }
-                right++;
-                bullet.style.left = `${right}px`;
-            }, 1);
+            // setInterval(() => {
+            //     if (right > main.offsetWidth - bullet.offsetWidth) {
+            //         bullet.remove();
+            //         right = tank.offsetLeft;
+            //     }
+            //     right++;
+            // }, 1);
+            bullet.style.left = `${right}px`;
         }
 
         if (tank.classList.contains('left')) {
-            setInterval(() => {
-                if (left < 0) {
-                    bullet.remove();
-                    left = tank.offsetLeft;
-                }
-                left--;
-                bullet.style.left = `${left}px`;
-            }, 1);
+            // setInterval(() => {
+            //     if (left < 0) {
+            //         bullet.remove();
+            //         left = tank.offsetLeft;
+            //     }
+            //     left--;
+            // }, 1);
+            bullet.style.left = `${left}px`;
         }
         if (tank.classList.contains('top')) {
-            setInterval(() => {
-                if (top < 0) {
-                    bullet.remove();
-                    top = tank.offsetTop;
-                }
-                top--;
-                bullet.style.top = `${top}px`;
-            }, 1);
+            // setInterval(() => {
+            //     if (top < 0) {
+            //         bullet.remove();
+            //         top = tank.offsetTop;
+            //     }
+            //     top--;
+            // }, 1);
+            bullet.style.top = `${top}px`;
         }
         if (tank.classList.contains('bottom')) {
-            setInterval(() => {
-                if (bottom > main.offsetHeight - bullet.offsetHeight) {
-                    bullet.remove();
-                    bottom = tank.offsetTop;
-                }
-                bottom++;
-                bullet.style.top = `${bottom}px`;
-            }, 1);
+            // setInterval(() => {
+            //     if (bottom > main.offsetHeight - bullet.offsetHeight) {
+            //         bullet.remove();
+            //         bottom = tank.offsetTop;
+            //     }
+            //     bottom++;
+            // }, 1);
+            bullet.style.top = `${bottom}px`;
         }
     }
     if (evt.code === 'KeyA') {
