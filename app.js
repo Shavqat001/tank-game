@@ -12,54 +12,53 @@ window.addEventListener('keydown', (evt) => {
         bullet.style.left = `${tank.offsetLeft + 80}px`;
         main.append(bullet);
 
-        console.log(tank.offsetLeft);
-        console.log(bullet.offsetLeft);
-
         let left = tank.offsetLeft;
         let right = tank.offsetLeft;
         let top = tank.offsetTop;
         let bottom = tank.offsetTop;
 
         if (tank.classList.contains('right')) {
-            // setInterval(() => {
-            //     if (right > main.offsetWidth - bullet.offsetWidth) {
-            //         bullet.remove();
-            //         right = tank.offsetLeft;
-            //     }
-            //     right++;
-            // }, 1);
-            bullet.style.left = `${right}px`;
-        }
+            let intervalId = setInterval(() => {
+                if (right > main.offsetWidth - bullet.offsetWidth - 80) {
+                    bullet.remove();
+                    clearInterval(intervalId); // Останавливаем setInterval после достижения края
+                }
+                right++;
+                bullet.style.left = `${right + 80}px`; // Обновляем позицию пули
+            }, 1);
 
+        };
         if (tank.classList.contains('left')) {
-            // setInterval(() => {
-            //     if (left < 0) {
-            //         bullet.remove();
-            //         left = tank.offsetLeft;
-            //     }
-            //     left--;
-            // }, 1);
-            bullet.style.left = `${left}px`;
+            let intervalId = setInterval(() => {
+                if (left < 80) {
+                    bullet.remove();
+                    clearInterval(intervalId); // Останавливаем setInterval после достижения края
+                }
+                left--;
+                bullet.style.left = `${left - 80}px`; // Обновляем позицию пули
+            }, 1);
         }
         if (tank.classList.contains('top')) {
-            // setInterval(() => {
-            //     if (top < 0) {
-            //         bullet.remove();
-            //         top = tank.offsetTop;
-            //     }
-            //     top--;
-            // }, 1);
-            bullet.style.top = `${top}px`;
+            let intervalId = setInterval(() => {
+                if (top < 80) {
+                    bullet.remove();
+                    clearInterval(intervalId); // Останавливаем setInterval после достижения края
+                }
+                top--;
+                bullet.style.top = `${top - 80}px`;
+            }, 1);
+            bullet.style.left = `${tank.offsetLeft + 20}px`;
         }
         if (tank.classList.contains('bottom')) {
-            // setInterval(() => {
-            //     if (bottom > main.offsetHeight - bullet.offsetHeight) {
-            //         bullet.remove();
-            //         bottom = tank.offsetTop;
-            //     }
-            //     bottom++;
-            // }, 1);
-            bullet.style.top = `${bottom}px`;
+            let intervalId = setInterval(() => {
+                if (bottom > main.offsetHeight - bullet.offsetHeight - 80) {
+                    bullet.remove();
+                    clearInterval(intervalId); // Останавливаем setInterval после достижения края
+                }
+                bottom++;
+                bullet.style.top = `${bottom + 80}px`;
+            }, 1);
+            bullet.style.left = `${tank.offsetLeft + 20}px`;
         }
     }
     if (evt.code === 'KeyA') {
@@ -111,14 +110,4 @@ window.addEventListener('keydown', (evt) => {
         t = 0;
         tank.style.top = `${0}px`;
     }
-    // localStorage.setItem('top', tank.offsetTop);
-    // localStorage.setItem('left', tank.offsetLeft);
 });
-
-
-// window.addEventListener('load', () => {
-//     let top = localStorage.getItem('top');
-//     let left = localStorage.getItem('left');
-//     tank.style.left = `${left}px`;
-//     tank.style.top = `${top}px`;
-// });
